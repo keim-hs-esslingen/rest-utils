@@ -6,8 +6,16 @@
     <groupId>com.github.keim-hs-esslingen</groupId>
     <artifactId>rest-utils</artifactId>
     <version>2.2.6.1</version>
+    
     <name>REST Utils</name>
     <description>A collection of classes making it easier to work with REST in Spring Boot.</description>
+    <url>https://github.com/keim-hs-esslingen/rest-utils</url>
+    
+    <scm>
+        <connection>scm:git:git://github.com:keim-hs-esslingen/rest-utils.git</connection>
+        <developerConnection>scm:git:ssh://github.com:keim-hs-esslingen/rest-utils.git</developerConnection>
+        <url>https://github.com/keim-hs-esslingen/rest-utils</url>
+    </scm>
 
     <licenses>
         <license>
