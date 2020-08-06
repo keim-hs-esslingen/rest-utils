@@ -5,6 +5,10 @@
 	
     <groupId>com.github.keim-hs-esslingen</groupId>
     <artifactId>rest-utils</artifactId>
+    <!-- The version number is oriented after the spring-boot-start-web dependency version.
+    It uses the same first three digits like that one and adds a fourth one, that acutally 
+    represents it's own version. This is used to make choosing the right rest-utils library,
+    that matches your spring-boot-setup, easier. -->
     <version>2.2.6.2-SNAPSHOT</version>
     
     <name>REST Utils</name>
