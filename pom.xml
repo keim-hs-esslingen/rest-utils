@@ -16,7 +16,7 @@
     It uses the same first three digits like that one and adds a fourth one, that acutally 
     represents it's own version. This is used to make choosing the right rest-utils library,
     that matches your spring-boot-setup, easier. -->
-    <version>2.3.1.0</version>
+    <version>2.3.1.1-SNAPSHOT</version>
     
     <name>REST Utils</name>
     <description>A collection of classes making it easier to work with REST in Spring Boot.</description>
