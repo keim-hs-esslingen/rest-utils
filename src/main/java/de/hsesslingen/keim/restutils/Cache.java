@@ -28,19 +28,18 @@ import java.time.Instant;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
 
 /**
- * Stores items of type {@link T} in a map by an ID.
+ * Stores items of type {@link V} in a map by an key of type {@link K}..
  *
  * @author boesch
- * @param <T>
- * @param <ID>
+ * @param <V>
+ * @param <K>
  */
-public class Cache<T, ID> {
+public class Cache<K, V> {
 
     private Duration expiryDuration;
-    private Map<ID, Item> map = new HashMap<>();
+    private Map<K, Item> map = new HashMap<>();
 
     /**
      * Returns the item expiry duration set for this cache.
@@ -63,26 +62,52 @@ public class Cache<T, ID> {
     /**
      * Sets a value for the given id.
      *
-     * @param id
-     * @param item
+     * @param key
+     * @param value
      */
-    public void set(ID id, T item) {
-        if (map.containsKey(id)) {
-            map.get(id).setItem(item);
+    public void set(K key, V value) {
+        if (map.containsKey(key)) {
+            map.get(key).setItem(value);
         } else {
-            map.put(id, new Item(item));
+            map.put(key, new Item(value));
         }
+    }
+
+    /**
+     * Sets a value for the given id.
+     *
+     * @param key
+     * @param value
+     */
+    public void put(K key, V value) {
+        set(key, value);
+    }
+
+    /**
+     * Removes the value under {@link key} from the cache.
+     *
+     * @param key
+     */
+    public void remove(K key) {
+        this.map.remove(key);
+    }
+
+    /**
+     * Removes all key value pairs from the cache.
+     */
+    public void clear() {
+        this.map.clear();
     }
 
     /**
      * Gets the value of the given id.
      *
-     * @param id
+     * @param key
      * @return
      */
-    public Optional<T> get(ID id) {
-        if (map.containsKey(id)) {
-            return Optional.of(map.get(id).getItem());
+    public Optional<V> get(K key) {
+        if (map.containsKey(key)) {
+            return Optional.of(map.get(key).getItem());
         } else {
             return Optional.empty();
         }
@@ -91,16 +116,16 @@ public class Cache<T, ID> {
     /**
      * Removes expired items from the cache.
      */
-    protected void cleanUp() {
+    public void cleanUp() {
         if (expiryDuration != null) {
-            Set<ID> ids = map.keySet();
+            var keys = map.keySet();
             var now = Instant.now();
 
-            for (var id : ids) {
-                var item = map.get(id);
+            for (var key : keys) {
+                var item = map.get(key);
 
                 if (item.getLastUpdated().plus(expiryDuration).isBefore(now)) {
-                    map.remove(id);
+                    map.remove(key);
                 }
             }
         }
@@ -112,18 +137,18 @@ public class Cache<T, ID> {
      */
     private class Item {
 
-        private T item;
+        private V item;
         private Instant lastUpdated;
 
-        public Item(T item) {
+        public Item(V item) {
             this.setItem(item);
         }
 
-        public T getItem() {
+        public V getItem() {
             return item;
         }
 
-        public final void setItem(T item) {
+        public final void setItem(V item) {
             this.item = item;
             this.lastUpdated = Instant.now();
         }
