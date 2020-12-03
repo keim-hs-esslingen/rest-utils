@@ -32,19 +32,19 @@ import java.util.regex.Pattern;
  */
 public class UrlUtils {
 
-    private static Pattern domainPattern;
+    private static final Pattern DOMAIN_PATTERN;
     private static final String DOMAIN_NAME_REGEX = "^((?!-)[A-Za-z0-9-]{1,63}(?<!-)\\.)+[A-Za-z]{2,6}$";
 
-    private static Pattern ipAddressPattern;
-    private static final String IPADDRESS_REGEX
+    private static final Pattern IP4_ADDRESS_PATTERN;
+    private static final String IP4_ADDRESS_REGEX
             = "^([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\."
             + "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\."
             + "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\."
             + "([01]?\\d\\d?|2[0-4]\\d|25[0-5])$";
 
     static {
-        domainPattern = Pattern.compile(DOMAIN_NAME_REGEX);
-        ipAddressPattern = Pattern.compile(IPADDRESS_REGEX);
+        DOMAIN_PATTERN = Pattern.compile(DOMAIN_NAME_REGEX);
+        IP4_ADDRESS_PATTERN = Pattern.compile(IP4_ADDRESS_REGEX);
     }
 
     /**
@@ -54,7 +54,7 @@ public class UrlUtils {
      * @return
      */
     public static boolean isValidDomainName(String domainName) {
-        return domainPattern.matcher(domainName).matches();
+        return DOMAIN_PATTERN.matcher(domainName).matches();
     }
 
     /**
@@ -63,8 +63,8 @@ public class UrlUtils {
      * @param ip
      * @return
      */
-    public static boolean isValidIpAddress(String ip) {
-        return ipAddressPattern.matcher(ip).matches();
+    public static boolean isValidIp4Address(String ip) {
+        return IP4_ADDRESS_PATTERN.matcher(ip).matches();
     }
 
 }

@@ -67,7 +67,7 @@ public class UrlUtilsTest {
 
     @Test
     public void testIpAddress() {
-        ipAddressList.forEach((ip, result) -> assertTrue(result == (UrlUtils.isValidIpAddress(ip))));
+        ipAddressList.forEach((ip, result) -> assertTrue(result == (UrlUtils.isValidIp4Address(ip))));
     }
 
     @Test
