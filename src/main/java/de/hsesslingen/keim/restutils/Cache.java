@@ -25,9 +25,9 @@ package de.hsesslingen.keim.restutils;
 
 import java.time.Duration;
 import java.time.Instant;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Stores items of type {@link V} in a map by an key of type {@link K}..
@@ -39,7 +39,14 @@ import java.util.Optional;
 public class Cache<K, V> {
 
     private Duration expiryDuration;
-    private Map<K, Item> map = new HashMap<>();
+    private final Map<K, Item> map = new ConcurrentHashMap<>();
+
+    public Cache() {
+    }
+
+    public Cache(Duration expiryDuration) {
+        this.expiryDuration = expiryDuration;
+    }
 
     /**
      * Returns the item expiry duration set for this cache.
@@ -118,16 +125,8 @@ public class Cache<K, V> {
      */
     public void cleanUp() {
         if (expiryDuration != null) {
-            var keys = map.keySet();
             var now = Instant.now();
-
-            for (var key : keys) {
-                var item = map.get(key);
-
-                if (item.getLastUpdated().plus(expiryDuration).isBefore(now)) {
-                    map.remove(key);
-                }
-            }
+            map.values().removeIf(item -> item.getLastUpdated().plus(expiryDuration).isBefore(now));
         }
     }
 
