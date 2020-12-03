@@ -19,12 +19,12 @@
     
     <name>Request Library</name>
     <description>A collection of classes that allows building HTTP requests in a builder style, utilizing Springs RestTemplate under the hood.</description>
-    <url>https://github.com/keim-hs-esslingen/rest-utils</url>
+    <url>https://github.com/keim-hs-esslingen/spring-request</url>
     
     <scm>
-        <connection>scm:git:https://github.com/keim-hs-esslingen/rest-utils.git</connection>
-        <developerConnection>scm:git:https://github.com/keim-hs-esslingen/rest-utils.git</developerConnection>
-        <url>https://github.com/keim-hs-esslingen/rest-utils</url>
+        <connection>scm:git:https://github.com/keim-hs-esslingen/spring-request.git</connection>
+        <developerConnection>scm:git:https://github.com/keim-hs-esslingen/spring-request.git</developerConnection>
+        <url>https://github.com/keim-hs-esslingen/spring-request</url>
         <tag>HEAD</tag>
     </scm>
 
