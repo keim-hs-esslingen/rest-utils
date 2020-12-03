@@ -23,8 +23,8 @@
     <url>https://github.com/keim-hs-esslingen/rest-utils</url>
     
     <scm>
-        <connection>scm:git:git://github.com:keim-hs-esslingen/rest-utils.git</connection>
-        <developerConnection>scm:git:ssh://github.com:keim-hs-esslingen/rest-utils.git</developerConnection>
+        <connection>scm:git:https://github.com/keim-hs-esslingen/rest-utils.git</connection>
+        <developerConnection>scm:git:https://github.com/keim-hs-esslingen/rest-utils.git</developerConnection>
         <url>https://github.com/keim-hs-esslingen/rest-utils</url>
     </scm>
 
