@@ -15,7 +15,7 @@
     It uses the same first three digits like that one and adds a fourth one, that acutally 
     represents it's own version. This is used to make choosing the right rest-utils library,
     that matches your spring-boot-setup, easier. -->
-    <version>2.3.4.1-SNAPSHOT</version>
+    <version>2.3.4.1</version>
     
     <name>Request Library</name>
     <description>A collection of classes that allows building HTTP requests in a builder style, utilizing Springs RestTemplate under the hood.</description>
@@ -25,7 +25,7 @@
         <connection>scm:git:https://github.com/keim-hs-esslingen/spring-request.git</connection>
         <developerConnection>scm:git:https://github.com/keim-hs-esslingen/spring-request.git</developerConnection>
         <url>https://github.com/keim-hs-esslingen/spring-request</url>
-        <tag>HEAD</tag>
+        <tag>Release-2.3.4.1</tag>
     </scm>
 
     <licenses>
