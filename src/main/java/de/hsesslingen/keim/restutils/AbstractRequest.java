@@ -74,10 +74,10 @@ import org.springframework.web.util.UriComponentsBuilder;
  * <ol>
  * <li>Use the static {@link
  * AbstractRequest#setDefaultRestTemplate(RestTemplate)} method to set the
- * default RestTemplate.</li>
+ * default RestTemplate.
  * <li>Derive a child class from this class, publish the desired API methods by
  * delegating them to {@code super} and making them {@code public} and <u>return
- * a different RestTemplate in {@code getRestTemplate()}</u>.</li>
+ * a different RestTemplate in {@code getRestTemplate()}</u>.
  * </ol>
  *
  * @author boesch
@@ -109,9 +109,9 @@ public abstract class AbstractRequest<T> {
     /**
      * Uses default values only.
      * <ul>
-     * <li>Method = GET</li>
-     * <li>Content Type = application/json</li>
-     * <li>URI encode charset = UTF-8 (encoding enabled by default)</li>
+     * <li>Method = GET
+     * <li>Content Type = application/json
+     * <li>URI encode charset = UTF-8 (encoding enabled by default)
      * </ul>
      */
     protected AbstractRequest() {
